@@ -1,0 +1,103 @@
+---
+title: "Coursera - Statistical Inference - Project 1"
+author: "Manoj Kumar"
+date: "Sunday, January 18, 2015"
+output: html_document
+---
+
+## **Assignment Details**
+
+This is the project for the statistical inference class. In it, you will use simulation to explore inference and do some simple inferential data analysis. The project consists of two parts:
+
+1. A simulation exercise.
+2. Basic inferential data analysis.
+
+You will create a report to answer the questions. Given the nature of the series, ideally you’ll use knitr to create the reports and convert to a pdf. (I will post a very simple introduction to knitr). **However, feel free to use whatever software that you would like to create your pdf.**
+
+**Each pdf report should be no more than 3 pages with 3 pages of supporting appendix material if needed (code, figures, etcetera).**
+
+
+```
+```
+
+### **PROBLEM DEFINITION : Overview of Tasks**
+
+In this project you will investigate the exponential distribution in R and compare it with the Central Limit Theorem. The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. 
+
+The mean of exponential distribution is 1/lambda and the standard deviation is also 1/lambda. Set lambda = 0.2 for all of the simulations. 
+
+You will investigate the distribution of averages of 40 exponentials. Note that you will need to do a thousand simulations. Illustrate via simulation and associated explanatory text the properties of the distribution of the mean of 40 exponentials.  You should
+
+1. Show the sample mean and compare it to the theoretical mean of the distribution.
+
+2. Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
+
+3. Show that the distribution is approximately normal.
+
+In point 3, focus on the difference between the distribution of a large collection of random exponentials and the distribution of a large collection of averages of 40 exponentials. 
+
+
+```
+```
+
+#### **STEP 1: GLOBAL OPTIONS**
+
+In this section we will define our global options for the project and then according to assignment guidelines, we will begin with defining initial variables.
+
+We now will first set the following global options:
+
+* Load the libraries needed for this project (e.g. knitr, ggplot2 etc.) so that all the necessary functions are available all the time.
+
+* Set **ECHO** to **TRUE** to be sure all R codes are shown in the report.
+
+* Set random seed to 1 so that we get the same results each time we run the codes. When seed set to 1, the random seed is set to a known value so the rexp function always generates the same array and hence report is reproducible.
+
+```{r, results='hide', echo=TRUE}
+
+# Loading libraries
+library(knitr)
+library(ggplot2)
+
+# Setting global option for ECHO
+opts_chunk$set(echo = TRUE)
+
+# Setting random seed to 1
+set.seed(1)
+
+```
+
+The above code complete the first part in this section.
+
+We then set the initial variables as defined in the assignment: 
+
+* Number of values (n) = 40 
+* lambda = 0.2 
+* Number of iterations should be as least 1000. so we set it to 2000 (nsim = 2000) 
+
+```{r, results='hide', echo=TRUE}
+
+n <- 40
+
+lambda <- 0.2
+
+nsim <- 2000
+
+```
+
+With this we are done with all our initial settings as per assignment requirements.
+
+
+```
+```
+
+#### **STEP 2 : GENERATING DATASET**
+
+```{r, results='hide', echo=TRUE}
+
+dataset <- matrix(rexp(n * nsim, lambda), nsim)
+
+```
+
+
+
+
